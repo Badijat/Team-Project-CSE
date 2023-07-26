@@ -47,3 +47,10 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+
+/.classpath
+/.project
+
+.classpath
+.project
+/bin
