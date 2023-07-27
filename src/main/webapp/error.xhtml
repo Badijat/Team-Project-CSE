@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+	  
+<h:head>
+  <meta charset="UTF-8"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>	
+  <title>Error!</title>
+  <link rel="stylesheet" href="resources/main.css"></link>
+</h:head>
+
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f7f7f7;
+    }
+</style>
+
+<h:body>
+  <div class="error-container">
+    <div class="error-code">Error!</div>
+    <div class="error-message">This account already exists!</div>
+    <div class="error-message">Please, log in to continue your booking!</div>
+    <a class="error-back-link" href="/">Log In</a>
+  </div>
+</h:body>
+</html>
