@@ -1,0 +1,56 @@
+@charset "UTF-8";
+    .error-container {
+      text-align: center;
+    }
+
+    .error-code {
+      font-size: 100px;
+      color: #e74c3c;
+      margin-bottom: 30px;	
+    }
+
+    .error-message {
+      font-size: 30px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .error-back-link {
+      color: #3498db;
+      text-decoration: none;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+
+    .error-back-link:hover {
+      color: #1abc9c;
+    }
+
+    .animated {
+      animation-duration: 1s;
+      animation-fill-mode: both;
+    }
+    
+    .success-code {
+		font-size: 100px;
+		color: green;
+		margin-bottom: 30px;		
+	}
+	
+    .success-message {
+		font-size: 30px;
+		color:#333;
+		margin-bottom: 10px;
+	}
+	
+	.home-screen-button {
+      color: #3498db;
+      text-decoration: none;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+	
+	 .home-screen-button:hover {
+      color: #1abc9c;
+    }
+	
