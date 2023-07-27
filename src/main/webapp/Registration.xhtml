@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+	  
+<h:head>
+  <meta charset="UTF-8"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>	
+  <title>Registration page</title>
+  <link rel="stylesheet" href="resources/main.css"></link>
+</h:head>
+
+<style>
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style for labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Style for input fields */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style for the Register button */
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+</style>
+	  
+<h:body>
+    <h:form>
+        <h2>Registration Form</h2>
+        
+        <h:outputLabel for="name" value="Name: " />
+        <h:inputText id="name" value="#{registrationBean.name}" required="true" />
+        <br />
+        
+        <h:outputLabel for="email" value="Email: " />
+        <h:inputText id="email" value="#{registrationBean.email}" required="true" />
+        <br />
+        
+        <h:outputLabel for="password" value="Password: " />
+        <h:inputSecret id="password" value="#{registrationBean.password}" required="true" />
+        <br />
+        
+        <h:commandButton value="Register" action="#{registrationBean.register}" />
+    </h:form>
+</h:body>
+
+</html>
