@@ -17,6 +17,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 			<artifactId>jsf-impl</artifactId>
 			<version>2.2.6</version>
 		</dependency>
+		<dependency>
+			<groupId>com.test.maven</groupId>
+			<artifactId>com.test</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

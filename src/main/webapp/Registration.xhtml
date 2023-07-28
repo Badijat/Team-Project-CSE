@@ -67,18 +67,18 @@ input[type="submit"]:hover {
         <h2>Registration Form</h2>
         
         <h:outputLabel for="name" value="Name: " />
-        <h:inputText id="name" value="#{CustomerBean.name}" required="true" />
+        <h:inputText id="name" value="#{UsersTable.name}" required="true" />
         <br />
         
         <h:outputLabel for="email" value="Email: " />
-        <h:inputText id="email" value="#{registrationBean.email}" required="true" />
+        <h:inputText id="email" value="#{UsersTable.email}" required="true" />
         <br />
         
         <h:outputLabel for="password" value="Password: " />
-        <h:inputSecret id="password" value="#{registrationBean.password}" required="true" />
+        <h:inputSecret id="password" value="#{UsersTable.password}" required="true" />
         <br />
         
-        <h:commandButton value="Register" action="#{registrationBean.register}" />
+        <h:commandButton value="Register" action="#{usersTable.newUser}" />
     </h:form>
 </h:body>
 
