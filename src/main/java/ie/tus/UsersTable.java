@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-@ManagedBean(name="usersTable")
+@ManagedBean(name="UsersTable")
 @SessionScoped
 public class UsersTable {
 	
@@ -50,20 +50,20 @@ public class UsersTable {
 			this.name = name;
 		}
 
-		public void setEmail(String email) {
+		public void setemail(String email) {
 			this.email = email;
 		}
 
-		public void setPassword(String password) {
+		public void setpassword(String password) {
 			this.password = password;
 		}
 		
 		// these methods may not be needed
-		public String getPassword() {
+		public String getpassword() {
 			return password;
 		}
 
-		public String getEmailAddress() {
+		public String getemail() {
 			return email;
 		}
 		public String getname() {
