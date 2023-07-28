@@ -12,19 +12,23 @@ public class UsersTable {
 	
 		private ArrayList<User> users;
 		private String name, email, password;
+		private User LoggedInUser;
 		
 		@PostConstruct
 		public void init() {
 			System.out.println("Datatable init");
 			users = new ArrayList<User>();
-			User firstName = new User("William Dupont", "Pass0rd", "william@gmail.com");
-			users.add(firstName);
+			User firstUser = new User("William Dupont", "Pass0rd", "william@gmail.com");
+			users.add(firstUser);
 			
-			User secondName = new User("Harry Styles" , "NotHarryStyles", "harry@hotmail.com");
-			users.add(secondName);
+			User secondUser = new User("Harry Styles" , "NotHarryStyles", "harry@hotmail.com");
+			users.add(secondUser);
 			
-			User thirdName = new User ("Jon BonJovi", "jon@hotmail.com", "jon@gmail.com");
-			users.add (thirdName);
+			User thirdUser = new User ("Jon BonJovi", "jon@hotmail.com", "jon@gmail.com");
+			users.add(thirdUser);
+			
+			User testUser = new User ("test", "test", "test@gmail.com");
+			users.add(testUser);
 		}
 		
 		// get the entire list of users 
@@ -68,6 +72,19 @@ public class UsersTable {
 		}
 		public String getname() {
 			return name;
+		}
+		public String login() {
+			final User login = new User(this.name, this.password, this.email);
+			boolean valildLogin = users.contains(login);
+			if(valildLogin) {
+				LoggedInUser = login;
+			}
+			
+			if(valildLogin == true) {
+				return "success.xhtml";
+			} else {
+				return "error.xhtml";
+			}
 		}
 	}
 
