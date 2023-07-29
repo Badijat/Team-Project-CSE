@@ -68,4 +68,11 @@ public class User {
 			   this.password.equals(otherUser.password);
 	}
 
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", emailAddress=" + emailAddress + ", password=" + password + "]";
+	}
+	
+	
+
 }

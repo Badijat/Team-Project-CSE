@@ -71,14 +71,14 @@ div {
 		<h2>Registration Form</h2>
 
 		<h:outputLabel for="username" value="Name: " />
-		<p:inputText id="name" value="#{user.username}"
+		<p:inputText id="name" value="#{UsersTable.name}"
 			required="true" 
 			requiredMessage="Name required"/>
 		<p:message for="name"/>
 		<br />
 
 		<h:outputLabel for="email" value="Email: " />
-		<p:inputText type="email" id="email" value="#{user.email}" pattern=".+@.+\.com"
+		<p:inputText type="email" id="email" value="#{UsersTable.email}" pattern=".+@.+\.com"
 			required="true"
 			requiredMessage="Email address required"/>
 			<p:message for="email"/>
@@ -92,7 +92,7 @@ div {
 		id="password1"/>
 		<p:message for="password1" />
 		<h:commandButton value="Register"
-			action="#{user.register}" />
+			action="#{UsersTable.newUser}" />
 		<br />
 	</h:form>
 	

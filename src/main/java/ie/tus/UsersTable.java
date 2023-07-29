@@ -18,6 +18,7 @@ public class UsersTable {
 		public void init() {
 			System.out.println("Datatable init");
 			users = new ArrayList<User>();
+			
 			User firstUser = new User("William Dupont", "Pass0rd", "william@gmail.com");
 			users.add(firstUser);
 			
@@ -39,17 +40,66 @@ public class UsersTable {
 		
 		
 		// calling this method creates a new user in the database
-		public String newUser() {
+		public String newUser() {	
+			// does the password have less than 8 characters 
+			if(this.password.length() < 8) {
+				return "Password must be 8 or more characters long";
+			}
+			
+			// check if the password contain an upper case letter, lower case letter and a number
+			String check = checkPassword(password);
+			if(check != "correct") {
+				return check;
+			}
+			
+			// pack the users information into a User object
 			final User user = new User(this.name, this.password, this.email);
-			users.add(user);
-			this.name = null;
-			this.password  = null;
-			this.email = null;
-			System.out.println(users);
-			return null;
+			
+			// validate the user trying to login. Does the account already exist
+			if(users.contains(user)) {
+				return "user already exists";
+			}else {
+				users.add(user);
+				this.name = null;
+				this.password  = null;
+				this.email = null;
+				System.out.println(users);
+				return null;
+			}
 		}
 		
-		// put the information from the form into these set methods and then call newUser to create a new user
+		private static String checkPassword(String str) {
+		    char ch;
+		    boolean capitalFlag = false;
+		    boolean lowerCaseFlag = false;
+		    boolean numberFlag = false;
+		    for(int i=0;i < str.length();i++) {
+		        ch = str.charAt(i);
+		        if(Character.isDigit(ch)) {
+		            numberFlag = true;
+		        }
+		        else if (Character.isUpperCase(ch)) {
+		            capitalFlag = true;
+		        } 
+		        else if (Character.isLowerCase(ch)) {
+		            lowerCaseFlag = true;
+		        }
+		        if(numberFlag && capitalFlag && lowerCaseFlag)
+		            return "correct";
+		    }
+		    if(!capitalFlag) {
+		    	return "Password requires capital letter";
+		    }
+		    if(!lowerCaseFlag) {
+		    	return "Password requires a lower case letter";
+		    }
+		    if(!numberFlag) {
+		    	return "Password requires a numnber";
+		    }
+			return "correct";
+		}
+		
+		// to create a new user, call these set methods and then call newUser
 		public void setname(String name) {
 			this.name = name;
 		}
@@ -62,7 +112,7 @@ public class UsersTable {
 			this.password = password;
 		}
 		
-		// these methods may not be needed
+		// these get methods may not be needed but included anyway
 		public String getpassword() {
 			return password;
 		}
