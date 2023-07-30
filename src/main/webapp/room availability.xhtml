@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check Hotel Room Availability</title>
+</h:head>
+
+<style>
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style for labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Style for input fields */
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style for select menu */
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style for the Check Availability button */
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Style for the available rooms table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+
+</style>
+<h:body>
+    <h2>Check Hotel Room Availability</h2>
+    <h:form>
+        <h:outputLabel for="checkInDate" value="Check-In Date: " />
+        <h:inputText id="checkInDate" value="#{availabilityBean.checkInDate}" required="true" />
+        <br />
+
+        <h:outputLabel for="checkOutDate" value="Check-Out Date: " />
+        <h:inputText id="checkOutDate" value="#{availabilityBean.checkOutDate}" required="true" />
+        <br />
+
+        <h:outputLabel for="guests" value="Number of Guests: " />
+        <h:inputText id="guests" value="#{availabilityBean.numGuests}" required="true" />
+        <br />
+
+        <h:outputLabel for="roomType" value="Room Type: " />
+        <h:selectOneMenu id="roomType" value="#{availabilityBean.roomType}" required="true">
+            <f:selectItem itemValue="Standard" itemLabel="Standard" />
+            <f:selectItem itemValue="Deluxe" itemLabel="Deluxe" />
+            <f:selectItem itemValue="Suite" itemLabel="Suite" />
+        </h:selectOneMenu>
+        <br />
+
+        <h:commandButton value="Check Availability" action="#{availabilityBean.checkAvailability}" />
+    </h:form>
+
+    <h:panelGroup rendered="#{not empty availabilityBean.availableRooms}">
+        <h2>Available Rooms</h2>
+        <h:dataTable value="#{availabilityBean.availableRooms}" var="room">
+            <h:column>
+                <f:facet name="header">Room Type</f:facet>
+                #{room.roomType}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Price</f:facet>
+                #{room.price}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Availability</f:facet>
+                <h:outputText value="#{room.available ? 'Available' : 'Not Available'}" styleClass="#{room.available ? 'available' : 'unavailable'}" />
+            </h:column>
+        </h:dataTable>
+    </h:panelGroup>
+</h:body>
+
+</html>
