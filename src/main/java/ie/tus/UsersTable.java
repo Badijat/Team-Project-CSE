@@ -68,7 +68,7 @@ public class UsersTable {
 			}
 		}
 		
-		private static String checkPassword(String str) {
+		public static String checkPassword(String str) {
 		    char ch;
 		    boolean capitalFlag = false;
 		    boolean lowerCaseFlag = false;
@@ -96,6 +96,8 @@ public class UsersTable {
 		    if(!numberFlag) {
 		    	return "Password requires a numnber";
 		    }
+		    
+		    // will never get to this return statement but java requires it
 			return "correct";
 		}
 		
