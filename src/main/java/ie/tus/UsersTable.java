@@ -138,7 +138,7 @@ public class UsersTable {
 			}
 			
 			if(valildLogin == true) {
-				return "success.xhtml";
+				return "room availability.xhtml";
 			} else {
 				return "error.xhtml";
 			}
