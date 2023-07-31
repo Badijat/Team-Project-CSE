@@ -1,0 +1,108 @@
+@charset "UTF-8";
+    .error-container {
+      text-align: center;
+    }
+
+    .error-code {
+      font-size: 100px;
+      color: #e74c3c;
+      margin-bottom: 30px;	
+    }
+
+    .error-message {
+      font-size: 30px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .error-back-link {
+      color: #3498db;
+      text-decoration: none;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+
+    .error-back-link:hover {
+      color: #1abc9c;
+    }
+
+    .animated {
+      animation-duration: 1s;
+      animation-fill-mode: both;
+    }
+    
+    .success-code {
+		font-size: 100px;
+		color: green;
+		margin-bottom: 30px;		
+	}
+	
+    .success-message {
+		font-size: 30px;
+		color:#333;
+		margin-bottom: 10px;
+	}
+	
+	.home-screen-button {
+      color: #3498db;
+      text-decoration: none;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+	
+	 .home-screen-button:hover {
+      color: #1abc9c;
+    }
+    
+    /* main.css */
+
+/* Style for the form container */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style for labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Style for input fields */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style for the Check Out button */
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Additional styles can be added as needed */
+    
+	
