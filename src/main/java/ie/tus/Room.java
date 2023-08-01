@@ -3,26 +3,39 @@ package ie.tus;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+
+
+class Availablity {
+    public static final int AVAILABLE = 0;     
+    public static final int BOOKED    = 1; 
+
+    public int status = 0;
+
+    // Guest who booked the room
+    public User guest;
+}
+
 public class Room {
 
-	private int roomId;
+	private int roomNo;
     private String roomName;
     private int price;
     private int occupancy;
     private Hotel parentHotel;
 
-    public enum Availablity {
-        AVAILABLE,
-        NEEDS_CLEANING,
-        BOOKED;
-    }
+    // public enum Availablity {
+    //     AVAILABLE,
+    //     NEEDS_CLEANING,
+    //     BOOKED;
+    // }
+
     // Date used to start the index for the availability array
     // ie. the availability at index 0 is "2023-01-01" and the availability at index 1 is "2023-01-02"
     private final LocalDate startDate = LocalDate.parse("2023-01-01");
     private Availablity[] availability;
 
     public Room() {
-		this.roomId = -1;
+		this.roomNo = -1;
 		this.roomName = "";
 		this.price = -1;
 		this.occupancy = -1;
@@ -30,20 +43,28 @@ public class Room {
         this.availability = new Availablity[365];
 	}
     
-    public Room(int roomId, String roomName, int price, int occupancy, Hotel parentHotel, Availablity[] availability) {
-		this.roomId = roomId;
+    public Room(int roomNo, String roomName, int price, int occupancy, Hotel parentHotel, Availablity[] availability) {
+		this.roomNo = roomNo;
 		this.roomName = roomName;
 		this.price = price;
 		this.occupancy = occupancy;
 		this.parentHotel = parentHotel;
         this.availability = availability;
 	}
-    
-	public int getRoomId() {
-		return roomId;
+    public Room(int roomNo, String roomName, int price, int occupancy, Hotel parentHotel) {
+		this.roomNo = roomNo;
+		this.roomName = roomName;
+		this.price = price;
+		this.occupancy = occupancy;
+		this.parentHotel = parentHotel;
+        this.availability = new Availablity[365];;
 	}
-	public void setRoomId(int roomId) {
-		this.roomId = roomId;
+    
+	public int getRoomNo() {
+		return roomNo;
+	}
+	public void setRoomNo(int roomNo) {
+		this.roomNo = roomNo;
 	}
 	public String getRoomName() {
 		return roomName;
@@ -75,27 +96,53 @@ public class Room {
     public void setAvailability(Availablity[] availability) {
         this.availability = availability;
     }
-    
+
     // Given an array of days to book, check if all the days are available and mark them as booked
-    public boolean bookDays(String[] bookDays) {
+    public boolean bookDays(String[] bookDays, User guest) {
         int[] daysToBook = new int[bookDays.length];
 
         // Convert to indexs so we can check if the day is available
         for(int i = 0; i < bookDays.length; i++) {
-            daysToBook[i] = (int) startDate.until(LocalDate.parse(bookDays[i]), ChronoUnit.DAYS);
+            // daysToBook[i] = (int) startDate.until(LocalDate.parse(bookDays[i]), ChronoUnit.DAYS);
+            daysToBook[i] = dateToIndex(bookDays[i]);
         }
 
         // Check if all the days are available
         for (int day : daysToBook) {
-            if(availability[day] != Availablity.AVAILABLE) {
+            if(availability[day].status != Availablity.AVAILABLE) {
                 return false;
             }
         }
 
         // Mark the days as booked
         for (int day : daysToBook) {
-            availability[day] = Availablity.BOOKED;
+            availability[day].status = Availablity.BOOKED;            
+            availability[day].guest = guest;
         }
         return true;
+    }
+    public boolean isRoomAvailable(String date) {
+        return isRoomAvailable(dateToIndex(date));
+    }
+    public boolean isRoomAvailable(LocalDate date) {
+        return isRoomAvailable(dateToIndex(date));
+    }
+    private boolean isRoomAvailable(int index) {
+        return availability[index].status == Availablity.AVAILABLE;
+    }
+    public int dateToIndex(String date) {
+        return dateToIndex(LocalDate.parse(date));
+    }
+    public int dateToIndex(LocalDate date) {
+        return (int) startDate.until(date, ChronoUnit.DAYS);
+    }
+    public Availablity getAvailability(String date) {
+        return getAvailability(dateToIndex(date));
+    }
+    public Availablity getAvailability(LocalDate date) {
+        return getAvailability(dateToIndex(date));
+    }
+    public Availablity getAvailability(int index) {
+        return availability[index];
     }
 }

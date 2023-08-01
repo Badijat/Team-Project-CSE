@@ -1,31 +1,31 @@
 package ie.tus;
 
 public class Staff {
-    private int customerId;
+    private int staffId;
 	private String name;
     private String email;    
     private String password;
 	private Hotel placeOfWork;
     public Staff() {
-		this.customerId = -1;
+		this.staffId = -1;
 		this.name = "";
 		this.email = "";
 		this.password = "";
         this.placeOfWork = null;
 	}
-	public Staff(int customerId, String name, String email,
-			String password, Hotel placeOfWork) {
-		this.customerId = customerId;
+	public Staff(int staffId, String name,
+			String password, String email, Hotel placeOfWork) {
+		this.staffId = staffId;
 		this.name = name;
 		this.email = email;
 		this.password = password;
 		this.placeOfWork = placeOfWork;
 	}
-	public int getCustomerId() {
-		return customerId;
+	public int getstaffId() {
+		return staffId;
 	}
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
+	public void setstaffId(int staffId) {
+		this.staffId = staffId;
 	}
 	public String getName() {
 		return name;
@@ -46,7 +46,7 @@ public class Staff {
 		this.password = password;
 	}
 	public Staff deepCopy() {
-		return new Staff(this.customerId, this.name, this.email,
+		return new Staff(this.staffId, this.name, this.email,
 			this.password, this.placeOfWork);
 	}
 }

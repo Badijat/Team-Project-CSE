@@ -1,5 +1,6 @@
 package ie.tus;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Hotel {
@@ -37,5 +38,17 @@ public class Hotel {
 	}
 	public void setStaff(ArrayList<Staff> staff) {
 		this.staff = staff;
+	}
+	public ArrayList<Room> getAvailableRooms(String date) {
+		return getAvailableRooms(LocalDate.parse(date));
+	}
+	public ArrayList<Room> getAvailableRooms(LocalDate date) {
+		ArrayList<Room> availableRooms = new ArrayList<Room>();
+        for (Room room : rooms) {
+            if (room.isRoomAvailable(date)) {
+                availableRooms.add(room);
+            }
+        }
+        return availableRooms;
 	}
 }
