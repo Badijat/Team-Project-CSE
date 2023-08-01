@@ -1,19 +1,9 @@
-package ie.tus;
+package ie.tus.Hotel;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-
-
-class Availablity {
-    public static final int AVAILABLE = 0;     
-    public static final int BOOKED    = 1; 
-
-    public int status = 0;
-
-    // Guest who booked the room
-    public User guest;
-}
+import ie.tus.User;
 
 public class Room {
 
@@ -22,12 +12,6 @@ public class Room {
     private int price;
     private int occupancy;
     private Hotel parentHotel;
-
-    // public enum Availablity {
-    //     AVAILABLE,
-    //     NEEDS_CLEANING,
-    //     BOOKED;
-    // }
 
     // Date used to start the index for the availability array
     // ie. the availability at index 0 is "2023-01-01" and the availability at index 1 is "2023-01-02"
@@ -41,23 +25,29 @@ public class Room {
 		this.occupancy = -1;
 		this.parentHotel = null;
         this.availability = new Availablity[365];
+        for (int i = 0; i < availability.length; i++) {
+            availability[i] = new Availablity();
+        }
 	}
     
-    public Room(int roomNo, String roomName, int price, int occupancy, Hotel parentHotel, Availablity[] availability) {
-		this.roomNo = roomNo;
-		this.roomName = roomName;
-		this.price = price;
-		this.occupancy = occupancy;
-		this.parentHotel = parentHotel;
-        this.availability = availability;
-	}
+    // public Room(int roomNo, String roomName, int price, int occupancy, Hotel parentHotel, Availablity[] availability) {
+	// 	this.roomNo = roomNo;
+	// 	this.roomName = roomName;
+	// 	this.price = price;
+	// 	this.occupancy = occupancy;
+	// 	this.parentHotel = parentHotel;
+    //     this.availability = availability;
+	// }
     public Room(int roomNo, String roomName, int price, int occupancy, Hotel parentHotel) {
 		this.roomNo = roomNo;
 		this.roomName = roomName;
 		this.price = price;
 		this.occupancy = occupancy;
 		this.parentHotel = parentHotel;
-        this.availability = new Availablity[365];;
+        this.availability = new Availablity[365];
+        for (int i = 0; i < availability.length; i++) {
+            availability[i] = new Availablity();
+        }
 	}
     
 	public int getRoomNo() {
@@ -116,7 +106,7 @@ public class Room {
 
         // Mark the days as booked
         for (int day : daysToBook) {
-            availability[day].status = Availablity.BOOKED;            
+            availability[day].status = Availablity.BOOKED;
             availability[day].guest = guest;
         }
         return true;
@@ -142,7 +132,7 @@ public class Room {
     public Availablity getAvailability(LocalDate date) {
         return getAvailability(dateToIndex(date));
     }
-    public Availablity getAvailability(int index) {
+    private Availablity getAvailability(int index) {
         return availability[index];
     }
 }

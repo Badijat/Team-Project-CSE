@@ -1,4 +1,4 @@
-package ie.tus;
+package ie.tus.Hotel;
 
 public class Staff {
     private int staffId;
@@ -21,10 +21,10 @@ public class Staff {
 		this.password = password;
 		this.placeOfWork = placeOfWork;
 	}
-	public int getstaffId() {
+	public int getStaffId() {
 		return staffId;
 	}
-	public void setstaffId(int staffId) {
+	public void setStaffId(int staffId) {
 		this.staffId = staffId;
 	}
 	public String getName() {
@@ -45,8 +45,14 @@ public class Staff {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Staff deepCopy() {
-		return new Staff(this.staffId, this.name, this.email,
-			this.password, this.placeOfWork);
+	public Hotel getPlaceOfWork() {
+		return placeOfWork;
 	}
+	public void setPlaceOfWork(Hotel placeOfWork) {
+		this.placeOfWork = placeOfWork;
+	}
+	// public Staff deepCopy() {
+	// 	return new Staff(this.staffId, this.name, this.email,
+	// 		this.password, this.placeOfWork);
+	// }
 }

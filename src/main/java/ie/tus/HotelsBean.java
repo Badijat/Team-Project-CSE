@@ -7,6 +7,10 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import ie.tus.Hotel.Hotel;
+import ie.tus.Hotel.Room;
+import ie.tus.Hotel.Staff;
+
 @ManagedBean
 @SessionScoped
 public class HotelsBean {
