@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Confirmation</title>
+</head>
+<style>
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 800px;
+	flex-direction: column;
+	text-align: center;
+}
+
+#content-box {
+	max-width: 400px;
+	margin: 0 auto;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#content {
+	display: flex;
+	flex-direction: column;
+}
+
+#card {
+	display: flex;
+	flex-direction: row;
+}
+
+#checkbox {
+	width: 100%;
+}
+
+form {
+	width: 100%;
+}
+
+input[type="submit"] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	width: fit-content;
+	margin: 15px 5px;
+}
+
+input[type="submit"]:hover {
+	background-color: #45a049;
+}
+
+#error{
+	color: red;
+}
+</style>
+<h:body>
+	<H1>Confirmation</H1>
+
+	<div id="content-box">
+		<div id="content">
+			<h2>Personal information</h2>
+			<h:outputLabel for="name" value="Name: " />
+			<h:outputLabel for="email" value="Email: " />
+
+			<br />
+			<h2>Booking information</h2>
+			<h:outputLabel for="hotel" value="Hotel: " />
+			<h:outputLabel for="checkInDate" value="Check in date: " />
+			<h:outputLabel for="checkOutDate" value="Check out date: " />
+			<h:outputLabel for="roomType" value="Type of room: " />
+			<h:outputLabel for="price" value="Price: €" />
+
+			<h5 class="mt-0">Please check that all information above is
+				accurate about your booking.</h5>
+		</div>
+		<div id="card">
+			<h:form>
+				<p:selectBooleanCheckbox id="checkbox"
+					value="#{confirmation.isChecked}"
+					itemLabel="I agree that I want to book the above room." />
+				<h:commandButton id="back" value="Back to check availability"
+					action="#{confirmation.back}" />
+				<h:commandButton id="proceed" value="Proceed to payment"
+					action="#{confirmation.confrimBooking}" />
+			</h:form>
+		</div>
+		<div id="error-container">
+			<div id="error-result">
+				<h:outputText value="#{confirmation.error}" id="error" />
+			</div>
+		</div>
+	</div>
+
+</h:body>
+</html>
