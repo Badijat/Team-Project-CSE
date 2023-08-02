@@ -11,11 +11,13 @@ import java.util.List;
 @ViewScoped
 public class AvailabilityBean implements Serializable {
 
-    private Date checkInDate;
+	private static final long serialVersionUID = 1L;
+	private Date checkInDate;
     private Date checkOutDate;
     private int numGuests;
     private String roomType;
     private List<Room> availableRooms;
+    private User LoggedInUser;
 
     public Date getCheckInDate() {
         return checkInDate;
@@ -53,12 +55,13 @@ public class AvailabilityBean implements Serializable {
         return availableRooms;
     }
 
-    public void checkAvailability() {
+    public String checkAvailability() {
 
         availableRooms = new ArrayList<>();
         availableRooms.add(new Room("Standard Room", 100.0, true));
         availableRooms.add(new Room("Deluxe Room", 150.0, true));
         availableRooms.add(new Room("Suite", 250.0, false));
+        return null;
     }
 
     // Inner class to represent a hotel room
@@ -75,4 +78,12 @@ public class AvailabilityBean implements Serializable {
 
 
     }
+
+	public User getLoggedInUser() {
+		return LoggedInUser;
+	}
+
+	public void setLoggedInUser(User loggedInUser) {
+		LoggedInUser = loggedInUser;
+	}
 }

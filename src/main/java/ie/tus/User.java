@@ -5,11 +5,13 @@ public class User {
 	// user object to hold the users information
 
 	private String name, emailAddress, password;
+	private boolean loggedIn;
 
 	public User(String name, String password, String emailAddress) {
 		this.name = name;
 		this.emailAddress = emailAddress;
 		this.password = password;
+		this.loggedIn = false;
 	}
 
 	public String getname() {
@@ -70,6 +72,14 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [name=" + name + ", emailAddress=" + emailAddress + ", password=" + password + "]";
+	}
+
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
+
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;
 	}
 	
 	
