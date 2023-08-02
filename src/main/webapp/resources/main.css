@@ -53,4 +53,10 @@
 	 .home-screen-button:hover {
       color: #1abc9c;
     }
+    
+    .error-result {
+      font-size: 100px;
+      color: #e74c3c;
+      margin-bottom: 30px;	
+    }
 	

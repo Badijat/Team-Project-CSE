@@ -1,12 +1,9 @@
 package testClasses;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import ie.tus.User;
 import ie.tus.UsersTable;
 
@@ -18,7 +15,7 @@ class UsersTableTest {
 		ut = new UsersTable();
 		ut.init();
 		ut.setname("User");
-		ut.setpassword("Ab123456");
+		ut.setPassword("Ab123456");
 		ut.setemail("123@gmail.com");
 		ut.newUser();
 	}
@@ -27,10 +24,10 @@ class UsersTableTest {
 	@Test
 	void testNewUser1() {
 		ut.setname("User");
-		ut.setpassword("123");
+		ut.setPassword("123");
 		ut.setemail("123@gmail.com");
 		
-		assertEquals("Password must be 8 or more characters long" , ut.newUser());
+		assertEquals("Password must at least 8 characters in length" , ut.newUser());
 	}
 
 	 // User doesnt exist
@@ -56,27 +53,37 @@ class UsersTableTest {
 	// all correct information 
 	@Test
 	void testNewUser4() {
-		User user = new User("Michael", "Abcde123", "122233443@gmail.com");
+		ut.setname("User1");
+		ut.setPassword("Ab123456");
+		ut.setemail("123@gmail.com");
 		
-		ArrayList<User> arr = ut.getNames();
-		
-		assertEquals(false , arr.contains(user));
+		assertEquals("correct", ut.newUser());
 	}
 	
 	// user already exists 
 	@Test
 	void testNewUser5() {
-		User user = new User("William Dupont", "Pass0rd", "william@gmail.com");
+		ut.setname("User");
+		ut.setPassword("Ab123456");
+		ut.setemail("123@gmail.com");
 		
-		ArrayList<User> arr = ut.getNames();
+		assertEquals("This user already exists. Please try logging in.", ut.newUser());
+	}
+	
+	// invalid password
+	@Test
+	void testNewUser6() {
+		ut.setname("User1");
+		ut.setPassword("Abasdasdasd");
+		ut.setemail("123@gmail.com");
 		
-		assertEquals(true , arr.contains(user));
+		assertEquals("Password must contain a number.", ut.newUser());
 	}
 	
 	@Test
 	void testloginPass() {
 		ut.setname("User");
-		ut.setpassword("Ab123456");
+		ut.setPassword("Ab123456");
 		ut.setemail("123@gmail.com");
 		
 		assertEquals("success.xhtml", ut.login());
@@ -85,7 +92,7 @@ class UsersTableTest {
 	@Test
 	void testloginFail() {
 		ut.setname("User");
-		ut.setpassword("1333");
+		ut.setPassword("1333");
 		ut.setemail("123@gmail.com");
 		
 		assertEquals("error.xhtml", ut.login());
@@ -94,19 +101,19 @@ class UsersTableTest {
 	// check password, doesnt have a capital letter
 	@Test
 	void testcheckPassword1() {
-		assertEquals("Password requires capital letter", ut.checkPassword("a1"));
+		assertEquals("Password must contain a capital letter.", ut.checkPassword("a1"));
 	}
 	
 	// check password, has an upper case but doesnt have lower
 	@Test
 	void testcheckPassword2() {
-		assertEquals("Password requires a lower case letter", ut.checkPassword("A1"));
+		assertEquals("Password must contain a lower case letter.", ut.checkPassword("A1"));
 	}
 	
 	// check password, has an upper case and lower case but no number
 	@Test
 	void testcheckPassword3() {
-		assertEquals("Password requires a numnber", ut.checkPassword("Aa"));
+		assertEquals("Password must contain a number.", ut.checkPassword("Aa"));
 	}
 	
 	// check password, has an upper case and lower case and a number (valid password combo)
