@@ -53,8 +53,8 @@ class UsersTableTest {
 	// all correct information 
 	@Test
 	void testNewUser4() {
-		ut.setname("User1");
-		ut.setPassword("Ab123456");
+		ut.setname("newUser");
+		ut.setPassword("Ab1234567");
 		ut.setemail("123@gmail.com");
 		
 		assertEquals("correct", ut.newUser());
@@ -86,7 +86,7 @@ class UsersTableTest {
 		ut.setPassword("Ab123456");
 		ut.setemail("123@gmail.com");
 		
-		assertEquals("success.xhtml", ut.login());
+		assertEquals("room availability.xhtml", ut.login());
 	}
 	
 	@Test

@@ -287,7 +287,8 @@ public class HotelsBean {
 		if (roomsAreAvailable == true) {
 			hotel.BookRooms(checkInDateString, checkOutDateString, numGuests, roomType);
 		} else {
-			error = "There is no rooms available.";
+			error = "There is no rooms available."; 
+			return "error.xhtml";
 		}
 
 		return "bookingConfirmation.xhtml";

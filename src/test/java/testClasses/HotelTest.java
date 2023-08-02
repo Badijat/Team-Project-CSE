@@ -65,68 +65,68 @@ class HotelTest {
 	void testRoomsBooking() {
 		
 		// Standard room test
-		String successfulBooking = hb.bookRooms("Mary", "2023-02-01", "2023-02-08", 1, "Standard");
-		assertEquals("success.xhtml", successfulBooking);
+		String successfulBooking = bookRoomWrapper(hb, "Mary", "2023-02-01", "2023-02-08", 1, "Standard");
+		assertEquals("bookingConfirmation.xhtml", successfulBooking);
 		
 		// Book out all the rooms
-		hb.bookRooms("Mary", "2023-02-01", "2023-02-08", 1, "Standard");
-		hb.bookRooms("Mary", "2023-02-01", "2023-02-08", 1, "Standard");
-		hb.bookRooms("Mary", "2023-02-01", "2023-02-08", 1, "Standard");
-		hb.bookRooms("Mary", "2023-02-01", "2023-02-08", 1, "Standard");
+		bookRoomWrapper(hb, "Mary", "2023-02-01", "2023-02-08", 1, "Standard");
+		bookRoomWrapper(hb, "Mary", "2023-02-01", "2023-02-08", 1, "Standard");
+		bookRoomWrapper(hb, "Mary", "2023-02-01", "2023-02-08", 1, "Standard");
+		bookRoomWrapper(hb, "Mary", "2023-02-01", "2023-02-08", 1, "Standard");
 		
 		// Rooms are all booked so try book anew room
-		String unsuccessfulBooking = hb.bookRooms("Mary", "2023-02-01", "2023-02-08", 1, "Standard");
+		String unsuccessfulBooking = bookRoomWrapper(hb, "Mary", "2023-02-01", "2023-02-08", 1, "Standard");
 		assertEquals("error.xhtml", unsuccessfulBooking);
 		
 
 
 
 		// Double room test
-		successfulBooking = hb.bookRooms("Mary", "2023-02-01", "2023-02-08", 1, "Double");
-		assertEquals("success.xhtml", successfulBooking);
+		successfulBooking = bookRoomWrapper(hb, "Mary", "2023-02-01", "2023-02-08", 1, "Double");
+		assertEquals("bookingConfirmation.xhtml", successfulBooking);
 		
 		// Book out all the rooms
-		hb.bookRooms("Mary", "2023-02-01", "2023-02-08", 1, "Double");
-		hb.bookRooms("Mary", "2023-02-01", "2023-02-08", 1, "Double");
-		hb.bookRooms("Mary", "2023-02-01", "2023-02-08", 1, "Double");
-		hb.bookRooms("Mary", "2023-02-01", "2023-02-08", 1, "Double");
+		bookRoomWrapper(hb, "Mary", "2023-02-01", "2023-02-08", 1, "Double");
+		bookRoomWrapper(hb, "Mary", "2023-02-01", "2023-02-08", 1, "Double");
+		bookRoomWrapper(hb, "Mary", "2023-02-01", "2023-02-08", 1, "Double");
+		bookRoomWrapper(hb, "Mary", "2023-02-01", "2023-02-08", 1, "Double");
 		
 		// Rooms are all booked so try book anew room
-		unsuccessfulBooking = hb.bookRooms("Mary", "2023-02-01", "2023-02-08", 1, "Double");
+		unsuccessfulBooking = bookRoomWrapper(hb, "Mary", "2023-02-01", "2023-02-08", 1, "Double");
 		assertEquals("error.xhtml", unsuccessfulBooking);
 		
 
 
 
 		// Executive room test
-		successfulBooking = hb.bookRooms("Rose", "2023-02-01", "2023-02-08", 1, "Executive");
-		assertEquals("success.xhtml", successfulBooking);
+		successfulBooking = bookRoomWrapper(hb, "Rose", "2023-02-01", "2023-02-08", 1, "Executive");
+		assertEquals("bookingConfirmation.xhtml", successfulBooking);
 		
 		// Book out all the rooms
-		hb.bookRooms("Rose", "2023-02-01", "2023-02-08", 1, "Executive");
-		hb.bookRooms("Rose", "2023-02-01", "2023-02-08", 1, "Executive");
-		hb.bookRooms("Rose", "2023-02-01", "2023-02-08", 1, "Executive");
-		hb.bookRooms("Rose", "2023-02-01", "2023-02-08", 1, "Executive");
+		bookRoomWrapper(hb, "Rose", "2023-02-01", "2023-02-08", 1, "Executive");
+		bookRoomWrapper(hb, "Rose", "2023-02-01", "2023-02-08", 1, "Executive");
+		bookRoomWrapper(hb, "Rose", "2023-02-01", "2023-02-08", 1, "Executive");
+		bookRoomWrapper(hb, "Rose", "2023-02-01", "2023-02-08", 1, "Executive");
 		
 		// Rooms are all booked so try book anew room
-		unsuccessfulBooking = hb.bookRooms("Rose", "2023-02-01", "2023-02-08", 1, "Executive");
+		unsuccessfulBooking = bookRoomWrapper(hb, "Rose", "2023-02-01", "2023-02-08", 1, "Executive");
 		assertEquals("error.xhtml", unsuccessfulBooking);
 
 
 
 		
 		// Suite room test
-		successfulBooking = hb.bookRooms("Thyme", "2023-02-01", "2023-02-08", 1, "Suite");
-		assertEquals("success.xhtml", successfulBooking);
+		successfulBooking = bookRoomWrapper(hb, "Thyme", "2023-02-01", "2023-02-08", 1, "Suite");
+		assertEquals("bookingConfirmation.xhtml", successfulBooking);
 		
 		// Book out all the rooms
-		hb.bookRooms("Thyme", "2023-02-01", "2023-02-08", 1, "Suite");
-		hb.bookRooms("Thyme", "2023-02-01", "2023-02-08", 1, "Suite");
-		hb.bookRooms("Thyme", "2023-02-01", "2023-02-08", 1, "Suite");
-		hb.bookRooms("Thyme", "2023-02-01", "2023-02-08", 1, "Suite");
+		bookRoomWrapper(hb, "Thyme", "2023-02-01", "2023-02-08", 1, "Suite");
+		bookRoomWrapper(hb, "Thyme", "2023-02-01", "2023-02-08", 1, "Suite");
+		bookRoomWrapper(hb, "Thyme", "2023-02-01", "2023-02-08", 1, "Suite");
+		bookRoomWrapper(hb, "Thyme", "2023-02-01", "2023-02-08", 1, "Suite");
 		
 		// Rooms are all booked so try book anew room
-		unsuccessfulBooking = hb.bookRooms("Thyme", "2023-02-01", "2023-02-08", 1, "Suite");
+		unsuccessfulBooking = bookRoomWrapper(hb, "Thyme", "2023-02-01", "2023-02-08", 1, "Suite");
 		assertEquals("error.xhtml", unsuccessfulBooking);
 	}
 
@@ -134,46 +134,55 @@ class HotelTest {
 	void testMultiRoomsBooking() {
 		
 		// Standard room test
-		String successfulBooking = hb.bookRooms("Mary", "2023-02-01", "2023-02-08", 4, "Standard");
-		assertEquals("success.xhtml", successfulBooking);
+		String successfulBooking = bookRoomWrapper(hb, "Mary", "2023-02-01", "2023-02-08", 4, "Standard");
+		assertEquals("bookingConfirmation.xhtml", successfulBooking);
 
-		String unsuccessfulBooking = hb.bookRooms("Mary", "2023-02-01", "2023-02-08", 2, "Standard");
+		String unsuccessfulBooking = bookRoomWrapper(hb, "Mary", "2023-02-01", "2023-02-08", 2, "Standard");
 		assertEquals("error.xhtml", unsuccessfulBooking);
 
 
 		// Double room test
-		successfulBooking = hb.bookRooms("Thyme", "2023-02-01", "2023-02-08", 3, "Double");
-		assertEquals("success.xhtml", successfulBooking);
+		successfulBooking = bookRoomWrapper(hb, "Thyme", "2023-02-01", "2023-02-08", 3, "Double");
+		assertEquals("bookingConfirmation.xhtml", successfulBooking);
 
-		successfulBooking = hb.bookRooms("Thyme", "2023-02-01", "2023-02-08", 2, "Double");
-		assertEquals("success.xhtml", successfulBooking);
+		successfulBooking = bookRoomWrapper(hb, "Thyme", "2023-02-01", "2023-02-08", 2, "Double");
+		assertEquals("bookingConfirmation.xhtml", successfulBooking);
 		
-		unsuccessfulBooking = hb.bookRooms("Thyme", "2023-02-01", "2023-02-08", 5, "Double");
+		unsuccessfulBooking = bookRoomWrapper(hb, "Thyme", "2023-02-01", "2023-02-08", 5, "Double");
 		assertEquals("error.xhtml", unsuccessfulBooking);
 
 
 		// Executive room test
-		successfulBooking = hb.bookRooms("Rose", "2023-02-01", "2023-02-08", 5, "Executive");
-		assertEquals("success.xhtml", successfulBooking);
+		successfulBooking = bookRoomWrapper(hb, "Rose", "2023-02-01", "2023-02-08", 5, "Executive");
+		assertEquals("bookingConfirmation.xhtml", successfulBooking);
 
-		unsuccessfulBooking = hb.bookRooms("Rose", "2023-02-01", "2023-02-08", 2, "Executive");
+		unsuccessfulBooking = bookRoomWrapper(hb, "Rose", "2023-02-01", "2023-02-08", 2, "Executive");
 		assertEquals("error.xhtml", unsuccessfulBooking);
 
 		// Suite room test
-		successfulBooking = hb.bookRooms("Rose", "2023-02-01", "2023-02-08", 5, "Suite");
-		assertEquals("success.xhtml", successfulBooking);
-		successfulBooking = hb.bookRooms("Rose", "2023-02-07", "2023-02-20", 4, "Suite");
-		assertEquals("success.xhtml", successfulBooking);
+		successfulBooking = bookRoomWrapper(hb, "Rose", "2023-02-01", "2023-02-08", 5, "Suite");
+		assertEquals("bookingConfirmation.xhtml", successfulBooking);
+		successfulBooking = bookRoomWrapper(hb, "Rose", "2023-02-07", "2023-02-20", 4, "Suite");
+		assertEquals("bookingConfirmation.xhtml", successfulBooking);
 
-		unsuccessfulBooking = hb.bookRooms("Rose", "2023-02-07", "2023-02-11", 1, "Suite");
+		unsuccessfulBooking = bookRoomWrapper(hb, "Rose", "2023-02-07", "2023-02-11", 1, "Suite");
 		assertEquals("error.xhtml", unsuccessfulBooking);
 		
 		
 		
 		// Bad Hotel Test
-		unsuccessfulBooking = hb.bookRooms("Wrong Hotel", "2023-02-07", "2023-02-11", 1, "Suite");
+		unsuccessfulBooking = bookRoomWrapper(hb, "Wrong Hotel", "2023-02-07", "2023-02-11", 1, "Suite");
 		assertEquals("error.xhtml", unsuccessfulBooking);
 
 
+	}
+	
+	private String bookRoomWrapper(HotelsBean hb, String hotelName, String startDate, String endDate, int numGuests, String roomName) {
+		hb.setCurrentHotel(hotelName);
+		hb.setCheckInDateString(startDate);
+		hb.setCheckOutDateString(endDate);
+		hb.setNumGuests(numGuests);
+		hb.setRoomName(roomName);
+		return hb.bookRooms();
 	}
 }

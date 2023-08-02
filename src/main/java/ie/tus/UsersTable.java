@@ -172,8 +172,11 @@ public class UsersTable {
 				
 				FacesMessage errorMessage = new FacesMessage(error);
 				errorMessage.setSeverity(FacesMessage.SEVERITY_ERROR);
-				context.addMessage(null, errorMessage);
-				return (null);
+				if(context != null) {
+					// Is null during testing
+					context.addMessage(null, errorMessage); 
+				}
+				return "error.xhtml";
 			}
 
 		}
