@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<head>
+
+  <meta charset="utf-8" http-equiv="x-ua-compatible" content="ie=edge"></meta>
+  <title>Check In was Successful!</title>
+  
+  <style>
+    img {
+          border: 0;
+          height: 60px;
+          width: 100px;
+          display: block width: 70px; max-width: 70px; min-width: 48px;
+          float: left;
+    }
+    body {
+	  font-family: Arial, Helvetica, sans-serif;
+      background-color: #e9ecef;
+      font-size: 87.5%;
+      margin: 0;
+    }
+    h1{
+      margin: 30px;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      line-height: 48px;
+    }
+    h2 {
+       font-size: 150%;
+       margin-bottom: 0;
+    }
+    #page {
+	   width: 640px;
+	   margin: 0;
+	   margin-bottom: 0;
+       margin-left: auto;
+	   margin-right: auto;
+       background-color: white;
+	   padding: 15px;
+}
+
+	#header{
+		background-color: white;
+	}
+		
+	#main {
+	   width: 640px;
+	   margin-top: 0;
+	   margin-bottom: auto;
+       margin-left: auto;
+	   margin-right: auto;
+       background-color: white;
+	   padding: 15px;
+}
+	.button-container {
+	  background-color: white;
+	  padding: 70px;
+	  text-align: center;
+}
+	
+	.button {
+	  border: none;
+	  color: white;
+	  padding: 15px 32px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  cursor: pointer;
+	  background-color: #008CBA;
+	  position: absolute;
+	  top: 35%;
+	  left: 50%;
+	  -ms-transform: translate(-50%, -50%);
+	  transform: translate(-50%, -50%);
+}
+
+  </style>
+
+</head>
+<body>
+	<div id="page">
+		<div id="header">
+			 <h1><img src="error.png" alt="Logo"/>Error!</h1>		
+		</div>
+	</div>
+	<div id="main">
+		<h2>Sorry, there was a problem with this check in. Please, try again in a few minutes.</h2>
+	<div class="button-container">
+      <button class="button">Return Home!</button>
+    </div>
+	</div>
+</body>
+</html>
