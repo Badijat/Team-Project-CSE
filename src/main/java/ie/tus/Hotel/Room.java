@@ -6,11 +6,13 @@ import java.time.temporal.ChronoUnit;
 import ie.tus.User;
 
 public class Room {
+    public static final RoomType standardRoom  = new RoomType("Standard" ,  98, 1);
+    public static final RoomType doubleRoom    = new RoomType("Double"   , 168, 2);
+    public static final RoomType executiveRoom = new RoomType("Executive", 398, 1);
+    public static final RoomType suiteRoom     = new RoomType("Suite"    , 598, 2);
 
 	private int roomNo;
-    private String roomName;
-    private int price;
-    private int occupancy;
+    private RoomType roomType;
     private Hotel parentHotel;
 
     // Date used to start the index for the availability array
@@ -20,9 +22,7 @@ public class Room {
 
     public Room() {
 		this.roomNo = -1;
-		this.roomName = "";
-		this.price = -1;
-		this.occupancy = -1;
+		this.roomType = null;
 		this.parentHotel = null;
         this.availability = new Availablity[365];
         for (int i = 0; i < availability.length; i++) {
@@ -30,19 +30,9 @@ public class Room {
         }
 	}
     
-    // public Room(int roomNo, String roomName, int price, int occupancy, Hotel parentHotel, Availablity[] availability) {
-	// 	this.roomNo = roomNo;
-	// 	this.roomName = roomName;
-	// 	this.price = price;
-	// 	this.occupancy = occupancy;
-	// 	this.parentHotel = parentHotel;
-    //     this.availability = availability;
-	// }
-    public Room(int roomNo, String roomName, int price, int occupancy, Hotel parentHotel) {
+    public Room(int roomNo, RoomType roomType, Hotel parentHotel) {
 		this.roomNo = roomNo;
-		this.roomName = roomName;
-		this.price = price;
-		this.occupancy = occupancy;
+		this.roomType = roomType;
 		this.parentHotel = parentHotel;
         this.availability = new Availablity[365];
         for (int i = 0; i < availability.length; i++) {
@@ -56,24 +46,12 @@ public class Room {
 	public void setRoomNo(int roomNo) {
 		this.roomNo = roomNo;
 	}
-	public String getRoomName() {
-		return roomName;
-	}
-	public void setRoomName(String roomName) {
-		this.roomName = roomName;
-	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	public int getOccupancy() {
-		return occupancy;
-	}
-	public void setOccupancy(int occupancy) {
-		this.occupancy = occupancy;
-	}
+    public RoomType getRoomType() {
+        return roomType;
+    }
+    public void setRoomType(RoomType roomType) {
+        this.roomType = roomType;
+    }
 	public Hotel getParentHotel() {
 		return parentHotel;
 	}
@@ -134,5 +112,37 @@ public class Room {
     }
     private Availablity getAvailability(int index) {
         return availability[index];
+    }
+    
+    public boolean isAvailabilityForDates(String startDate, String endDate) {
+        return isAvailabilityForDates(dateToIndex(startDate), dateToIndex(endDate));
+    }
+
+    private boolean isAvailabilityForDates(int startDateIdx, int endDateIdx) {
+        for (int i = startDateIdx; i <= endDateIdx; i++) {
+            if(availability[i].status != Availablity.AVAILABLE) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public boolean bookRoomForDates(String startDate, String endDate) {
+        return bookRoomForDates(dateToIndex(startDate), dateToIndex(endDate));
+    }
+
+    private boolean bookRoomForDates(int startDateIdx, int endDateIdx) {
+        // Check if room is available
+        for (int i = startDateIdx; i <= endDateIdx; i++) {
+            if(availability[i].status != Availablity.AVAILABLE) {
+                return false;
+            }
+        }
+
+        // Set dates as booked
+        for (int i = startDateIdx; i <= endDateIdx; i++) {
+            availability[i].status = Availablity.BOOKED;
+        }
+        return true;
     }
 }

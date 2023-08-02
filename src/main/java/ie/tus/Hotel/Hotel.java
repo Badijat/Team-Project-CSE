@@ -51,4 +51,32 @@ public class Hotel {
         }
         return availableRooms;
 	}
+
+	public boolean isRoomTypesAvailable(String startDate, String endDate, int numGuests, RoomType roomType) {
+		for(Room room : rooms) {
+			if(room.getRoomType().equals(roomType) && room.isAvailabilityForDates(startDate, endDate)) {
+				if(numGuests > roomType.getOccupancy()) {
+					numGuests -= roomType.getOccupancy();
+				} else {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public boolean BookRooms(String startDate, String endDate, int numGuests, RoomType roomType) {
+		for(Room room : rooms) {
+			if(room.getRoomType().equals(roomType) && room.isAvailabilityForDates(startDate, endDate)) {
+				room.bookRoomForDates(startDate, endDate);
+				if(numGuests > roomType.getOccupancy()) {
+					numGuests -= roomType.getOccupancy();
+				} else {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 }

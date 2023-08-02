@@ -24,6 +24,6 @@ public class Availablity {
 
         return that.status == this.status &&  
             ((this.guest == null && that.guest == null) ||
-            (this.guest != null && that.guest.equals(this.guest)));
+            (this.guest != null && that.guest != null && that.guest.equals(this.guest)));
     }
 }
