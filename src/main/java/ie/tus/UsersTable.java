@@ -38,6 +38,11 @@ public class UsersTable {
 			System.out.println("Get names");
 			return users;
 		}
+		/*
+		 * // get the logged in user public User getLoggedInUser() {
+		 * System.out.println("Get log in"); User user; return user; }
+		 */
+		
 		
 		// calling this method creates a new user in the database
 		public String newUser() {	
@@ -130,6 +135,7 @@ public class UsersTable {
 		public String getname() {
 			return name;
 		}
+		
 		public String login() {
 			final User login = new User(this.name, this.password, this.email);
 			boolean valildLogin = users.contains(login);
