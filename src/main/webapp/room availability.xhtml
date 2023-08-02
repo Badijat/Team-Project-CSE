@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">>
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<meta charset="UTF-8" />
@@ -92,41 +92,49 @@ tr:nth-child(even) {
 <h:body>
 	<h2>Check Hotel Room Availability</h2>
 	<h:form>
-		<p:panelGrid columns="3" border="3">
-			
-		</p:panelGrid>
-			<h:outputLabel for="checkInDate" value="Check-In Date: " />
-			<p:calendar value="#{availabilityBean.checkInDate}" pattern="MM/dd/yy">
-			</p:calendar>
-			<!-- <h:inputText id="checkInDate" value="#{availabilityBean.checkInDate}"
-				required="true" /> -->
-			<br />
+		<h:outputLabel for="roomType" value="Hotel: " />
+		<h:selectOneMenu id="hotel" value="#{HotelsBean.currentHotel}"
+			required="true">
+			<f:selectItem itemValue="BHD_Rose" itemLabel="BHD Rose" />
+			<f:selectItem itemValue="BHD_Mary" itemLabel="BHD Mary" />
+			<f:selectItem itemValue="BHD_Thyme" itemLabel="BHD Thyme" />
+		</h:selectOneMenu>
+		
+		
+		<h:outputLabel for="checkInDate" value="Check-In Date: " />
+		<!-- <p:calendar value="#{HotelsBean.checkInDate}" pattern="MM/dd/yyyy">
+		</p:calendar> -->
+		<h:inputText id="checkInDate" value="#{HotelsBean.checkInDateString}"
+				required="true" /> 
+		<br />
 
-			<h:outputLabel for="checkOutDate" value="Check-Out Date: " />
-			<p:calendar value="#{availabilityBean.checkOutDate}" pattern="MM/dd/yy">
-			</p:calendar>
-			<br />
+		<h:outputLabel for="checkOutDate" value="Check-Out Date: " />
+		<!-- <p:calendar value="#{HotelsBean.checkOutDate}"
+			pattern="MM/dd/yyyy">
+		</p:calendar> -->
+		<h:inputText id="checkOutDate" value="#{HotelsBean.checkOutDateString}"
+				required="true" /> 
+		<br />
+		<h:outputLabel for="guests" value="Number of Guests: " />
+		<h:inputText id="guests" value="#{HotelsBean.numGuests}"
+			required="true" />
+		<br />
 
-			<h:outputLabel for="guests" value="Number of Guests: " />
-			<h:inputText id="guests" value="#{availabilityBean.numGuests}"
-				required="true" />
-			<br />
+		<h:outputLabel for="roomType" value="Room Type: " />
+		<h:selectOneMenu id="roomType" value="#{HotelsBean.roomName}"
+			required="true">
+			<f:selectItem itemValue="Standard" itemLabel="Standard" />
+			<f:selectItem itemValue="Deluxe" itemLabel="Deluxe" />
+			<f:selectItem itemValue="Suite" itemLabel="Suite" />
+		</h:selectOneMenu>
+		<br />
 
-			<h:outputLabel for="roomType" value="Room Type: " />
-			<h:selectOneMenu id="roomType" value="#{availabilityBean.roomType}"
-				required="true">
-				<f:selectItem itemValue="Standard" itemLabel="Standard" />
-				<f:selectItem itemValue="Deluxe" itemLabel="Deluxe" />
-				<f:selectItem itemValue="Suite" itemLabel="Suite" />
-			</h:selectOneMenu>
-			<br />
-
-			<h:commandButton value="Check Availability"
-				action="#{HotelsBean.getAvailableRooms}" />
-
+		<h:commandButton value="Check Availability"
+			action="#{HotelsBean.bookRooms}" />
+		<h:outputLabel for="roomType" value="#{HotelsBean.error}" />
 	</h:form>
 
-	<h:panelGroup rendered="#{not empty availabilityBean.availableRooms}">
+	<!-- <h:panelGroup rendered="#{not empty availabilityBean.availableRooms}">
 		<h2>Available Rooms</h2>
 		<h:dataTable value="#{availabilityBean.availableRooms}" var="room">
 			<h:column>
@@ -144,7 +152,7 @@ tr:nth-child(even) {
 					styleClass="#{room.available ? 'available' : 'unavailable'}" />
 			</h:column>
 		</h:dataTable>
-	</h:panelGroup>
+	</h:panelGroup> -->
 </h:body>
 
 </html>

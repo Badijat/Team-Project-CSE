@@ -67,20 +67,19 @@ input[type="submit"]:hover {
 </style>
 <h:body>
 	<H1>Confirmation</H1>
-
 	<div id="content-box">
 		<div id="content">
 			<h2>Personal information</h2>
-			<h:outputLabel for="name" value="Name: " />
-			<h:outputLabel for="email" value="Email: " />
+			<h:outputLabel for="name" value="Name: #{UsersTable.name}" />
+			<h:outputLabel for="email" value="Email: #{UsersTable.email}" />
 
 			<br />
 			<h2>Booking information</h2>
-			<h:outputLabel for="hotel" value="Hotel: " />
-			<h:outputLabel for="checkInDate" value="Check in date: " />
-			<h:outputLabel for="checkOutDate" value="Check out date: " />
-			<h:outputLabel for="roomType" value="Type of room: " />
-			<h:outputLabel for="price" value="Price: €" />
+			<h:outputLabel for="hotel" value="Hotel: #{HotelsBean.currentHotel}" />
+			<h:outputLabel for="checkInDate" value="Check in date: #{HotelsBean.checkInDateString}" />
+			<h:outputLabel for="checkOutDate" value="Check out date: #{HotelsBean.checkOutDateString}" />
+			<h:outputLabel for="roomType" value="Type of room: #{HotelsBean.roomName}" />
+			<h:outputLabel for="price" value="Price: € #{RoomType.price}" />
 
 			<h5 class="mt-0">Please check that all information above is
 				accurate about your booking.</h5>

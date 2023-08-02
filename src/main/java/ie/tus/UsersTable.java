@@ -134,6 +134,7 @@ public class UsersTable {
 			return email;
 		}
 		public String getname() {
+			System.out.println("Getting name");
 			return name;
 		}
 		
