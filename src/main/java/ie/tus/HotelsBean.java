@@ -200,6 +200,10 @@ public class HotelsBean {
         return hotel.getAvailableRooms(date);
     }
 
+    public String bookRooms(String hotelName) {
+        return bookRooms(hotelName, checkInDate, checkOutDate, numGuests, roomType);
+    }
+
     public String bookRooms(String hotelName, String startDate, String endDate, int numGuests, String roomName) {
         
         // Get the room type based on the room name
