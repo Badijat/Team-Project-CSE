@@ -1,14 +1,9 @@
 package testClasses;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import ie.tus.HotelsBean;
 import ie.tus.User;
 import ie.tus.Hotel.Availablity;

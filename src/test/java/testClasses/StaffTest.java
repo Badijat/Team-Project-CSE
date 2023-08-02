@@ -1,10 +1,8 @@
 package testClasses;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import ie.tus.User;
 import ie.tus.Hotel.Hotel;
 import ie.tus.Hotel.Room;
