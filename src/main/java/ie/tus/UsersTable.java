@@ -2,8 +2,10 @@ package ie.tus;
 
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean(name="UsersTable")
 @SessionScoped
@@ -131,7 +133,19 @@ public class UsersTable {
 		}
 		public String login() {
 			final User login = new User(this.name, this.password, this.email);
-			boolean valildLogin = users.contains(login);
+			
+			boolean valildLogin = false, usernameMacthed =false,passwordMatched=false;
+			
+			for (int i=0;i<this.users.size();i++) {
+				
+				User u = this.users.get(i);
+				usernameMacthed = u.getEmailAddress().equalsIgnoreCase(this.email);
+				passwordMatched = u.getPassword().equalsIgnoreCase(this.password);
+				valildLogin =  usernameMacthed && passwordMatched;
+				if(valildLogin)
+					break;
+			}
+			
 			if(valildLogin) {
 				LoggedInUser = login;
 			}
@@ -139,8 +153,22 @@ public class UsersTable {
 			if(valildLogin == true) {
 				return "room availability.xhtml";
 			} else {
-				return "error.xhtml";
+				
+				FacesContext context = FacesContext.getCurrentInstance();
+				String error = null ;
+				if(usernameMacthed && !passwordMatched)
+					error = "Invalid login : Incorrect password";
+				else if(!usernameMacthed && passwordMatched)
+					error = "Invalid login : Incorrect username";
+				else 
+					error = "Invalid login : Incorrect username and password";
+				
+				FacesMessage errorMessage = new FacesMessage(error);
+				errorMessage.setSeverity(FacesMessage.SEVERITY_ERROR);
+				context.addMessage(null, errorMessage);
+				return (null);
 			}
+
 		}
 
 		public String getErrorMessage() {

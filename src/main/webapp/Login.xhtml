@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:ui="http://java.sun.com/jsf/facelets">
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui">
   <h:head>
   	<meta charset="UTF-8"/>
   	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -15,6 +16,7 @@
     <div class="center">
       <h1>Login</h1>
       <h:form method="post">
+      	<p:messages/>
         <div class="txtField">
           <h:inputText id="email" value="#{UsersTable.email}" required="true" />
           <span></span>
