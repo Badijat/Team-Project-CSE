@@ -51,6 +51,6 @@ public class CheckInBean implements Serializable {
 
         // After processing the data, you can navigate to another page or stay on the same page
         // For this example, we'll stay on the same page
-        return null;
+        return "checkIn-success";
     }
 }
