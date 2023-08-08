@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check In Customer</title>
+</h:head>
+
+<style>
+
+/* Style for the form container */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style for labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Style for input fields */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style for the Check In button */
+input[type="submit"] {
+  background-color: #4CAF50; /* You can change this color to suit your preference */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049; /* You can change this color to suit your preference */
+}
+
+</style>
+<h:body>
+    <h2>Check In Guest</h2>
+    <h:form>
+        <h:outputLabel for="customerName" value="Guest Name: " />
+        <h:inputText id="customerName" value="#{CheckInBean.customerName}" required="true" />
+        <br />
+
+        <h:outputLabel for="roomNumber" value="Room Number: " />
+        <h:inputText id="roomNumber" value="#{CheckInBean.roomNumber}" required="true" />
+        <br />
+
+        <h:outputLabel for="checkInDate" value="Check-In Date: " />
+        <h:inputText id="checkInDate" value="#{CheckInBean.checkInDate}" required="true" />
+        <br />
+
+        <h:commandButton value="Check In" action="#{CheckInBean.checkIn}" />
+    </h:form>
+</h:body>
+
+</html>

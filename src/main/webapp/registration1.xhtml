@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<title>Registration page</title>
+	<link rel="stylesheet" href="resources/main.css"></link>
+</h:head>
+
+<style>
+form {
+	max-width: 400px;
+	margin: 0 auto;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0, 0.1);
+}
+
+h2 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+/* Style for labels */
+label {
+	display: block;
+	margin: 7px 0px 10px 0px;
+}
+
+/* Style for input fields */
+input[type="text"], input[type="password"], input[type="email"] {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 5px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+/* Style for the Register button */
+input[type="submit"] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	width: 100%;
+	margin: 5px 0px;
+}
+
+input[type="submit"]:hover {
+	background-color: #45a049;
+}
+
+div {
+	text-align: center;
+	font: Arial;
+}
+body{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 800px;
+	flex-direction: column;
+}
+#tabbedView {
+	width: 400px;
+	height: 550px;
+}
+
+#tab{
+	
+}
+
+li {
+	width: 48%;
+}
+</style>
+
+<h:body>
+	<div id="tabbedView">
+		<p:tab id="tab">
+			<p:tabView>
+				<p:tab title="Registration" class="tabLabels">
+					<h:form>
+						<h2>Registration Form</h2>
+
+						<h:outputLabel for="username" value="Name: " />
+						<p:inputText id="name" value="#{UsersTable.name}" required="true"
+							requiredMessage="Name required" />
+						<p:message for="name" />
+
+						<h:outputLabel for="email" value="Email: " />
+						<p:inputText type="email" id="email" value="#{UsersTable.email}"
+							pattern=".+@.+\.com" required="true"
+							requiredMessage="Email address required" />
+						<p:message for="email" />
+
+						<h:outputLabel for="password" value="Password: " />
+						<p:password type="password" id="password"
+							value="#{UsersTable.password}" name="psw"
+							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+							title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+							required="true" requiredMessage="Password is required"
+							feedback="true" />
+						<p:message for="password" />
+						<h:commandButton value="Register" action="#{UsersTable.newUser}" />
+					</h:form>
+
+					<div id="error-container">
+						<div id="error-result">
+							<h:outputText value="#{UsersTable.errorMessage}" id="error" />
+						</div>
+					</div>
+				</p:tab>
+
+				<p:tab title="Login" class="tabLabels">
+					<h:form>
+						<h2>Login</h2>
+
+						<h:outputLabel for="email" value="Email: " />
+						<h:inputText id="email" value="#{UsersTable.email}"
+							required="true" />
+						<br />
+
+						<h:outputLabel for="password" value="Password: " />
+						<h:inputSecret id="password" value="#{UsersTable.password}"
+							required="true" />
+						<br />
+
+						<h:commandButton value="Login" action="#{UsersTable.login}" />
+						<br />
+
+						<h:commandButton value="New User? Click here to Register"
+							action="registration"></h:commandButton>
+					</h:form>
+				</p:tab>
+			</p:tabView>
+			<div id="message">
+				<h3>Password must contain the following:</h3>
+				<p id="letter" class="invalid">
+					A <b>lowercase</b> letter
+				</p>
+				<p id="capital" class="invalid">
+					A <b>capital (uppercase)</b> letter
+				</p>
+				<p id="number" class="invalid">
+					A <b>number</b>
+				</p>
+				<p id="length" class="invalid">
+					Minimum <b>8 characters</b>
+				</p>
+			</div>
+		</p:tab>
+
+	</div>
+</h:body>
+
+</html>

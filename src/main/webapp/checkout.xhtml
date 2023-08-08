@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check Out Guest</title>
+</h:head>
+
+<link rel="stylesheet" href="resources/main.css"></link>
+
+<style>
+
+/* main.css */
+
+/* Style for the form container */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style for labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Style for input fields */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style for the Check Out button */
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+</style>
+
+<h:body>
+    <h2>Check Out Guest</h2>
+    <h:form>
+        <h:outputLabel for="guestName" value="Guest Name: " />
+        <h:inputText id="guestName" value="#{CheckoutBean.guestName}" required="true" />
+        <br />
+
+        <h:outputLabel for="roomNumber" value="Room Number: " />
+        <h:inputText id="roomNumber" value="#{CheckoutBean.roomNumber}" required="true" />
+        <br />
+
+        <h:outputLabel for="checkOutDate" value="Check-Out Date: " />
+        <h:inputText id="checkOutDate" value="#{CheckoutBean.checkOutDate}" required="true" />
+        <br />
+
+        <h:commandButton value="Check Out" action="#{CheckoutBean.checkOut}" />
+    </h:form>
+</h:body>
+
+</html>
+
